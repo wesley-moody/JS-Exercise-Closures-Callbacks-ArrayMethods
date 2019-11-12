@@ -70,12 +70,11 @@ function processLength(list, callback) {
  * should return 'barbar'.
 */
 function processLastItem(stringList, callback) {
-  let sum = 0
-for( let i = 0; i < numberList.length; i++){
-  sum += numberList[i];
+  let item = stringList[stringList.length-1];
+  return callback(item);
 }
-return callback(sum)
-};
+
+
 
 //   return callback(stringList.pop());
 // }
@@ -100,7 +99,9 @@ return callback(sum)
  * should return 1000.
 */
 function processSum(numberList, callback) {
-  return numberList.reduce(callback(accumulator, currentValue))
+  let sum = numberList.reduce((accumulator, currentValue) => accumulator + currentValue, 0)
+  return(callback(sum));
+  // return numberList.reduce(callback(accumulator, currentValue))
   }
 //   const arr = numberList.reduce(callback(accumulator, currentValue){}
 // }
@@ -125,7 +126,8 @@ function processSum(numberList, callback) {
  * should return 1000.
 */
 function processProduct(num1, num2, callback) {
-  return callback(num1, num2);
+  let product = num1 * num2;
+  return callback(product);
 }
 
 
@@ -261,12 +263,20 @@ function getRunnersByTShirtSize(runners, tShirtSize) {
  * @param runners array of runners like the one inside the /data/runners.js file.
  * @returns a number which is the sum of the donations by all runners.
 */
-function tallyUpDonations(runners) {
-  const total = runners.reduce(function(accumulator, currentValue){
-    return accumulator + currentValue.donations;
-  }, 0);
-  return total
+function tallyUpDonations(runners)
+
+{
+  return runners.reduce((total, array)=> {
+    return total + array.donation;    
+  },0);
 }
+
+
+//   return runners.reduce(function(accumulator, currentValue){
+//     return accumulator + currentValue.donations;
+//   }, 0);
+//   return total
+// }
 
 /////////////// CLOSURES ///////////////
 /////////////// CLOSURES ///////////////
